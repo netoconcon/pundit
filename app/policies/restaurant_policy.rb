@@ -31,4 +31,19 @@ class RestaurantPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  def destroy?
+
+    # only admin can destroy
+
+
+    #only user can destroy
+    # is_user_owner?
+  end
+
+  private
+
+  def is_user_owner?
+    record.user == user
+  end
 end
