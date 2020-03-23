@@ -1,7 +1,11 @@
 class RestaurantPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      #anyone can view the restaurant
+      # scope.all
+
+      # display only owner restaurants
+      scope.where(user: user)
     end
   end
 
@@ -18,9 +22,13 @@ class RestaurantPolicy < ApplicationPolicy
     true # anyone can create a new restaurant
   end
 
-  def edit?
-    # user -> current_user
-    # record -> @restaurant
+  # def edit? we do not need new because it look on update?
+  #   # user -> current_user
+  #   # record -> @restaurant
+  #   record.user == user
+  # end
+
+  def update?
     record.user == user
   end
 end
