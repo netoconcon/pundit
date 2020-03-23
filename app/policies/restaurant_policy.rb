@@ -5,7 +5,12 @@ class RestaurantPolicy < ApplicationPolicy
     end
   end
 
-  def new?
+  # def new? we do not need new because it look on create?
+  #   true
+  # end
+
+
+  def create?
     true # anyone can create a new restaurant
   end
 end
